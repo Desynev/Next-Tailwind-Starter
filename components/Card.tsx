@@ -7,7 +7,21 @@ import Button from "./Button";
 import { IconContainer } from "./RenderIcons";
 
 import { useRouter } from "next/router";
+import React from "react";
 
+type ImageProps = {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  className: string;
+};
+
+type CardProps = {
+  imgSrc: string;
+  alt: string;
+  images?: ImageProps[];
+};
 const images = [
   {
     src: BG_PIC,
@@ -41,7 +55,8 @@ const images = [
   },
 ];
 
-const Card = () => {
+const Card: React.FC<CardProps> = (props: any) => {
+  const { imgSrc, alt } = props;
   const router = useRouter();
 
   const handleCheckout = () => {
@@ -49,12 +64,12 @@ const Card = () => {
   };
   return (
     // image container
-    <div className=" bg-white m-10 p-6 shadow-xl rounded-xl  lg:flex  justify-center ">
-      <div className=" p-10  rounded-lg lg:w-fit  w-full  flex-wrap">
-        <div className="bg-slate-100 h-fit px-10 py-8 ">
+    <div className=" bg-white m-10  shadow-lg rounded-xl lg:flex  justify-center ">
+      <div className=" rounded-lg lg:w-fit w-full  ">
+        <div className="bg-slate-100 h-fit px-10 py-10 mt-6  w-fit">
           <Image
-            src={BG_PIC}
-            alt="Luminous GPTEX 240 AH Battery"
+            src={imgSrc}
+            alt={alt}
             width={400}
             height={400}
             className="rounded-lg mb-3"
@@ -65,15 +80,11 @@ const Card = () => {
         </p>
 
         <div className="flex items-center justify-between mb-4 ">
+          {/* {images.map((image, index) => ( */}
           <div className="flex-col mx-2 h-[18] w-24 ">
-            <Image
-              src={BG_PIC}
-              alt="Luminous GPTEX 240 AH Battery"
-              width={100}
-              height={100}
-              className=""
-            />
+            <Image src={BG_PIC} alt="BgPic" />
           </div>
+          {/* ))} */}
 
           <div className="flex-col mx-2 h-[18] w-24">
             <Image

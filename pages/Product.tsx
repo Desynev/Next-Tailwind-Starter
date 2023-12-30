@@ -1,7 +1,40 @@
 import Card from "@/components/Card";
 import { Label } from "@/components/Labels";
 import React from "react";
+import BG_PIC from "@/public/Apple-Watch-Ultra-2-Alt-Gear.jpg";
 
+const images = [
+  {
+    src: BG_PIC,
+    alt: "Luminous GPTEX 240 AH Battery",
+    width: 100,
+    height: 100,
+    className: "",
+  },
+
+  {
+    src: BG_PIC,
+    alt: "Luminous GPTEX 240 AH Battery",
+    width: 100,
+    height: 100,
+    className: "",
+  },
+
+  {
+    src: BG_PIC,
+    alt: "Luminous GPTEX 240 AH Battery",
+    width: 100,
+    height: 100,
+    className: "",
+  },
+  {
+    src: BG_PIC,
+    alt: "Luminous GPTEX 240 AH Battery",
+    width: 100,
+    height: 100,
+    className: "",
+  },
+];
 const ProductListing = () => {
   return (
     <div className="container bg-slate-100">
@@ -9,12 +42,15 @@ const ProductListing = () => {
         <div>
           <h1 className="text-3xl">Batteries</h1>
         </div>
-
         <div>
           <h1>View All Batteries</h1>
         </div>
       </div>
-      <Card />
+
+      {images.map((image, index) => (
+        // @ts-ignore
+        <Card imgSrc={image.src} alt={image.alt} key={index} />
+      ))}
     </div>
   );
 };
