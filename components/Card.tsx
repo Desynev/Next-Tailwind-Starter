@@ -2,9 +2,11 @@ import Image from "next/image";
 import { Label } from "./Labels";
 
 import BG_PIC from "@/public/Apple-Watch-Ultra-2-Alt-Gear.jpg";
-import { Heart } from "react-feather";
+import { Heart, Anchor } from "react-feather";
 import Button from "./Button";
 import { IconContainer } from "./RenderIcons";
+
+import { useRouter } from "next/router";
 
 const images = [
   {
@@ -40,10 +42,15 @@ const images = [
 ];
 
 const Card = () => {
+  const router = useRouter();
+
+  const handleCheckout = () => {
+    router.push("/checkout");
+  };
   return (
     // image container
-    <div className=" bg-white shadow-md card flex  justify-center flex-wrap">
-      <div className=" p-10 rounded-lg  flex-wrap">
+    <div className=" bg-white m-10 p-6 shadow-xl rounded-xl  lg:flex  justify-center ">
+      <div className=" p-10  rounded-lg lg:w-fit  w-full  flex-wrap">
         <div className="bg-slate-100 h-fit px-10 py-8 ">
           <Image
             src={BG_PIC}
@@ -98,7 +105,7 @@ const Card = () => {
         </div>
       </div>
       {/* content container */}
-      <div className=" rounded-lg  p-8 flex-wrap">
+      <div className=" rounded-lg  p-8 flex-wrap lg:w-auto  w-full">
         <div className="flex items-center justify-between mb-4">
           <Label
             text="Pakistan"
@@ -185,7 +192,7 @@ const Card = () => {
           ))}
         </div>
 
-        <Button> Buy Now </Button>
+        <Button onClick={handleCheckout}> Buy Now </Button>
       </div>
     </div>
   );
